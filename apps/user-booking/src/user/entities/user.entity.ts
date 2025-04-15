@@ -14,8 +14,6 @@ export class User{
     @Column({ length: 20 , nullable:false })
     lastName: string;
 
-    @Column({ unique: true , nullable:false})
-    email: string;
 
     @OneToMany(() => Booking , (booking) => booking.user , { cascade: true })
     bookings:Booking[];
