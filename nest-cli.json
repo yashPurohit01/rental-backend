@@ -10,16 +10,6 @@
   "monorepo": true,
   "root": "apps/booking-service",
   "projects": {
-
-    "booking": {
-      "type": "application",
-      "root": "apps/booking-service",
-      "entryFile": "main",
-      "sourceRoot": "apps/booking-service/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/booking-service/tsconfig.app.json"
-      }
-    },
     "test": {
       "type": "application",
       "root": "apps/test",
@@ -27,6 +17,24 @@
       "sourceRoot": "apps/test/src",
       "compilerOptions": {
         "tsConfigPath": "apps/test/tsconfig.app.json"
+      }
+    },
+    "user-booking": {
+      "type": "application",
+      "root": "apps/user-booking",
+      "entryFile": "main",
+      "sourceRoot": "apps/user-booking/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user-booking/tsconfig.app.json"
+      }
+    },
+    "user": {
+      "type": "application",
+      "root": "apps/user",
+      "entryFile": "main",
+      "sourceRoot": "apps/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user/tsconfig.app.json"
       }
     }
   }
