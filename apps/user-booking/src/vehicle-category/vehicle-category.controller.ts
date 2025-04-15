@@ -1,33 +1,40 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { VehicleCategoryService } from './vehicle-category.service';
 import { CreateVehicleCategoryDto } from './dto/create-vehicle-category.dto';
 import { UpdateVehicleCategoryDto } from './dto/update-vehicle-category.dto';
+import { VehicleType } from './entities/vehicle-category.entity';
 
 @Controller('vehicle-category')
 export class VehicleCategoryController {
   constructor(private readonly vehicleCategoryService: VehicleCategoryService) {}
 
-  @Post()
+  @Get('')
+  check(@Query('vehicleType') vehicleType?: VehicleType) {
+    return "THIS IS VEHICLE CATEGORY API!"
+  }
+
+  @Post('/add-new-category')
   create(@Body() createVehicleCategoryDto: CreateVehicleCategoryDto) {
     return this.vehicleCategoryService.create(createVehicleCategoryDto);
   }
 
-  @Get()
-  findAll() {
-    return this.vehicleCategoryService.findAll();
+
+  @Get('/get-all-category')
+  findAll(@Query('vehicleType') vehicleType?: VehicleType) {
+    return this.vehicleCategoryService.findAll(vehicleType);
   }
 
-  @Get(':id')
+  @Get('/get-categroy-detail/:id')
   findOne(@Param('id') id: string) {
     return this.vehicleCategoryService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch('/update-categroy-detail/:id')
   update(@Param('id') id: string, @Body() updateVehicleCategoryDto: UpdateVehicleCategoryDto) {
     return this.vehicleCategoryService.update(id, updateVehicleCategoryDto);
   }
 
-  @Delete(':id')
+  @Delete('/delete-categroy/:id')
   remove(@Param('id') id: string) {
     return this.vehicleCategoryService.remove(id);
   }

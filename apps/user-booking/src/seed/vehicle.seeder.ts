@@ -11,31 +11,32 @@ export const seedVehicleData = async (dataSource: DataSource) => {
   // 1. Define categories
   const categories = [
     {
-      vehicleType: VehicleType.CAR,
+      vehicleType: VehicleType.FOUR_WHEELER,
       vehicleCategory: 'Luxury Car',
       vehicleCategoryDescription: 'High-end luxury vehicles',
     },
     {
-      vehicleType: VehicleType.BIKE,
+      vehicleType: VehicleType.TWO_WHEELER,
       vehicleCategory: 'Sports Bike',
       vehicleCategoryDescription: 'High-performance sports bikes',
     },
     {
-      vehicleType: VehicleType.BIKE,
+      vehicleType: VehicleType.TWO_WHEELER,
       vehicleCategory: 'Commuter Bike',
       vehicleCategoryDescription: 'Fuel-efficient daily commute bikes',
     },
     {
-      vehicleType: VehicleType.CAR,
+      vehicleType: VehicleType.FOUR_WHEELER,
       vehicleCategory: 'SUV',
       vehicleCategoryDescription: 'Spacious sports utility vehicles',
     },
     {
-      vehicleType: VehicleType.CAR,
+      vehicleType: VehicleType.FOUR_WHEELER,
       vehicleCategory: 'Economy Car',
       vehicleCategoryDescription: 'Budget-friendly compact cars',
     },
   ];
+  
 
   const savedCategories: VehicleCategory[] = [];
 

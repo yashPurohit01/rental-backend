@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateVehicleCategoryDto } from './dto/create-vehicle-category.dto';
 import { UpdateVehicleCategoryDto } from './dto/update-vehicle-category.dto';
-import { VehicleCategory } from './entities/vehicle-category.entity';
+import { VehicleCategory, VehicleType } from './entities/vehicle-category.entity';
 
 @Injectable()
 export class VehicleCategoryService {
@@ -17,10 +17,16 @@ export class VehicleCategoryService {
     return this.vehicleCategoryRepo.save(newCategory);
   }
 
-  async findAll(): Promise<VehicleCategory[]> {
-    return this.vehicleCategoryRepo.find({ relations: ['vehicles'] });
+  async findAll(vehicleType?: VehicleType): Promise<VehicleCategory[]> {
+    const query = this.vehicleCategoryRepo.createQueryBuilder('category')
+      .leftJoinAndSelect('category.vehicles', 'vehicle');
+  
+    if (vehicleType) {
+      query.andWhere('category.vehicleType = :vehicleType', { vehicleType });
+    }
+  
+    return await query.getMany();
   }
-
   async findOne(id: string): Promise<VehicleCategory> {
     const category = await this.vehicleCategoryRepo.findOne({
       where: { id },

@@ -15,10 +15,10 @@ import { User } from '../user/entities/user.entity';
       Vehicle,
       Booking,
       User,
-    ]),
+    ])
   ],
   controllers: [VehicleCategoryController],
   providers: [VehicleCategoryService],
-  exports: [VehicleCategoryService], // ✅ Exported for use in Vehicle or Booking modules
+  exports: [VehicleCategoryService,TypeOrmModule], // ✅ Exported for use in Vehicle or Booking modules
 })
 export class VehicleCategoryModule {}

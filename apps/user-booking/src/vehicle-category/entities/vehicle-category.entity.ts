@@ -10,9 +10,8 @@ import { Vehicle } from '../../vehicle/entities/vehicle.entity';
 
   
 export enum VehicleType {
-  CAR = 'CAR',
-  BIKE = 'BIKE',
-  OTHER = 'OTHER',
+  TWO_WHEELER = 'TWO_WHEELER',
+  FOUR_WHEELER = 'FOUR_WHEELER',
 }
   
   @Entity('vehicle_category')
